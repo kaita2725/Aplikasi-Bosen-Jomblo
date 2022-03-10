@@ -7,7 +7,7 @@ const ProfileCard: React.FC = () => {
   return(
       <IonCard id="card-profile">
         <IonAvatar className="ion-no-padding" id="profile">
-          <img src="assets/profile.jpg" className="profile-img"/>
+          <img src="assets/Sipping.gif" className="profile-img"/>
         </IonAvatar>
         <IonCardContent className="ion-text-center"  id="profile-content">
           <IonText class="ion-text-wrap" color="light">
