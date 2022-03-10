@@ -1,0 +1,84 @@
+ion-card#card-profile:hover #press{
+  visibility: hidden;
+}
+
+ion-card#card-profile{
+  text-align: center;
+  margin: 5% auto;
+  max-width: 250px  !important;
+  min-height: 300px !important;
+  max-height: 300px !important;
+  background-color: rgba(var(--ion-color-medium-rgb),0.3);
+  overflow: hidden;
+}
+
+ion-card#card-profile::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--ion-color-success);
+  -webkit-clip-path: circle(100px at 80% 10%);
+  z-index: -1;
+  transition: 0.5s ease-in-out;
+}
+
+ion-card#card-profile:hover:before{
+  clip-path: circle(250px at 70% -25%);
+  z-index: -1;
+}
+
+ion-avatar#profile{
+  width:100% !important;
+  height : 100% !important;
+  margin: 10% auto;
+  border: 5px solid rgba(var(--ion-color-secondary-rgb),0.5);
+  transform: translateY(10%);
+  transition: 0.5s;
+}
+
+ion-avatar#profile{
+  max-width: 180px !important;
+  max-height: 180px !important;
+}
+
+ion-card#card-profile:hover ion-avatar#profile {
+  top: 0%;
+  transform: translateY(-10%);
+}
+
+#button-profile{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 20px;
+  transition: 0.5s;opacity: 0;
+  visibility: hidden;
+  padding-top: 0;
+  padding-bottom: 0;
+  cursor: pointer;
+}
+
+ion-card#card-profile:hover #button-profile{
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0.5s;
+}
+
+#profile-content{
+  position: absolute;
+  bottom: -10%;
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  transition: 1s;
+  z-index: 10;
+}
+
+ion-card#card-profile:hover #profile-content{
+  opacity: 1;
+  transform: translateY(-50%);
+  transition-delay: 0.1s;
+}
