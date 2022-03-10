@@ -3,6 +3,7 @@ import { IonGrid, IonRow, IonCol, IonCardContent, IonText,IonAvatar, IonItemSlid
 import { useRef, useState, useContext} from 'react';
 import { femaleSharp, maleSharp, closeCircleOutline, personRemoveOutline, exitOutline} from 'ionicons/icons';
 import NomineeContext from '../DaftarCalonPasangan/NomineeContext';
+import {CRUSH_DATA} from '../DaftarCalonPasangan/CardHighlight';
 import './Target.css';
 
 const TargetList: React.FC = () => {
@@ -10,9 +11,23 @@ const TargetList: React.FC = () => {
   const slidingOptionsRef = useRef<HTMLIonItemSlidingElement>(null);
   const [ids, setId] = useState<string>();
   const [actionSheet, setShowActionSheet] = useState(false);
-
+  const oList = CRUSH_DATA;
+  console.log(NomineeCtx.crush);
   const deleteNominee = (id: string) => {
           slidingOptionsRef.current?.closeOpened();
+          NomineeCtx.crush.forEach(e =>{
+            if(e.id != id){
+            }
+            else{
+              oList.push({
+                id: e.id,
+                name: e.name,
+                description: e.description,
+                gender: e.gender,
+                avatar: e.avatar
+              })
+            }
+          });
           NomineeCtx.deleteNominee(id);
   }
 
@@ -46,22 +61,6 @@ const TargetList: React.FC = () => {
               <IonItemOption color="warning" onClick={() => sheetHandler(crush.id)}>
                 <IonIcon icon={closeCircleOutline} slot="icon-only" />
               </IonItemOption>
-              {ids && <IonActionSheet
-                isOpen={actionSheet}
-                onDidDismiss={() => setShowActionSheet(false)}
-                header="Remove this nominee?"
-                buttons={[{
-                    icon: personRemoveOutline,
-                    text: "Yes, remove from this list",
-                    handler: () => deleteNominee(ids),
-                  },
-                  {
-                    icon: exitOutline,
-                    text: "No, it was a mistake. Abort",
-                  }
-                ]}
-                />
-              }
             </IonItemOptions>
           </IonItemSliding>
         </IonRow>
@@ -75,6 +74,23 @@ const TargetList: React.FC = () => {
             </IonButton>
           </IonText>
         </IonButtons>
+    }
+
+    {ids && <IonActionSheet
+      isOpen={actionSheet}
+      onDidDismiss={() => setShowActionSheet(false)}
+      header="Remove this nominee?"
+      buttons={[{
+          icon: personRemoveOutline,
+          text: "Yes, remove from this list",
+          handler: () => deleteNominee(ids),
+        },
+        {
+          icon: exitOutline,
+          text: "No, it was a mistake. Abort",
+        }
+      ]}
+      />
     }
       </IonGrid>);
 };

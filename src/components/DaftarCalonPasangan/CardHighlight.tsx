@@ -26,12 +26,14 @@ export const CRUSH_DATA = [
   {id: 'p11', name: 'Anymouse', description: "navy", gender: "Female", avatar:'https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Blank&hairColor=Auburn&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Side&eyebrowType=DefaultNatural&mouthType=Sad&skinColor=Yellow'}
 ];
 
-const nList = shuffle(CRUSH_DATA);
+
+const randomList = shuffle(CRUSH_DATA);
 
 const CardHighlight: React.FC = () => {
 
   return (
     <IonGrid>
+    {console.log(CRUSH_DATA)}
       <IonRow>
         <IonCol>
           <Swiper
@@ -39,7 +41,7 @@ const CardHighlight: React.FC = () => {
           modules={[Pagination]}
           slidesPerView={3}
           className="mySwiper">
-              {nList.map((crush)=> (
+              {randomList.slice(0,10).map((crush)=> (
                 <SwiperSlide key={crush.id}>
                     <IonCard  class="card" >
                       <IonAvatar>
